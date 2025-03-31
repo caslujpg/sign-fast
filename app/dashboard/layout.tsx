@@ -1,6 +1,6 @@
 import { capitalizeWords } from '@/lib/utils';
+import { authOptions } from '@/next-auth-config';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
 import Navbar from './navbar';
 
 export default async function DashboardLayout({

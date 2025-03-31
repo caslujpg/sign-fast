@@ -10,11 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { capitalizeWords } from '@/lib/utils';
+import { authOptions } from '@/next-auth-config';
 import { Check, MenuIcon } from 'lucide-react';
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
-import { authOptions } from './api/auth/[...nextauth]/route';
 import howItWorks from './assets/howItWorks.svg';
 import logo from './assets/logo.svg';
 

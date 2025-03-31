@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { $Enums } from '@prisma/client';
 import { Download } from 'lucide-react';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { LuTrash2 } from 'react-icons/lu';
@@ -29,7 +30,7 @@ export default function MyDocuments() {
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [documents, setDocuments] = useState<Document[]>([]);
-  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [, setDeleteError] = useState<string | null>(null);
   const [signatureModalOpen, setSignatureModalOpen] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null);
 
@@ -91,6 +92,7 @@ export default function MyDocuments() {
       }
     } catch (error) {
       setUploadError('Aconteceu um erro inesperado. Tente novamente...');
+      console.error(error);
     } finally {
       setUploading(false);
     }
@@ -108,7 +110,8 @@ export default function MyDocuments() {
       if (!response.ok) throw new Error("Erro ao deletar documento");
 
       setDocuments((prev) => prev.filter((doc) => doc.id !== id));
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       setDeleteError("Erro ao deletar documento");
     }
   };
@@ -159,7 +162,7 @@ export default function MyDocuments() {
                   </button>
                   {doc.signatureImg && (
                     <div>
-                      <img src={doc.signatureImg} alt="Assinatura" className="h-6 w-6 rounded-full" />
+                      <Image src={doc.signatureImg} alt="Assinatura" className="h-6 w-6 rounded-full" />
                       <p className="text-sm text-gray-500">Assinado em: {doc.signedAt}</p>
                     </div>
                   )}
@@ -184,7 +187,7 @@ export default function MyDocuments() {
         <SignatureModal
           document={selectedDocument}
           onClose={() => setSignatureModalOpen(false)}
-          onSign={(signatureImg) => {
+          onSign={() => {
             fetchDocuments();
             setSignatureModalOpen(false);
           }}

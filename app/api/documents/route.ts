@@ -1,12 +1,12 @@
 import db from '@/lib/db';
 import { findUserByEmail } from '@/lib/user';
+import { authOptions } from '@/next-auth-config';
 import crypto from 'crypto';
 import fs from 'fs';
 import { writeFile } from 'fs/promises';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
-import { authOptions } from '../auth/[...nextauth]/route';
 
 declare module "next-auth" {
   interface Session {
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, document });
   } catch (error) {
-    console.error('Erro ao salvar ou registrar o arquivo:', error);
+    console.error(`Erro ao salvar ou registrar o arquivo: ${error}`, error);
     return NextResponse.json({ success: false, error: 'Erro ao salvar o arquivo' });
   }
 }
@@ -85,7 +85,7 @@ export async function GET() {
 
     return NextResponse.json(documents);
   } catch (error) {
-    return NextResponse.json({ error: "Erro ao buscar documentos" }, { status: 500 });
+    return NextResponse.json({ error: `Erro ao buscar documentos. ${error}` }, { status: 500 });
   }
 }
 

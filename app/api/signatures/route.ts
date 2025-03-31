@@ -1,11 +1,11 @@
 import db from "@/lib/db";
 import { findUserByEmail } from "@/lib/user";
+import { authOptions } from "@/next-auth-config";
 import { randomUUID } from "crypto";
 import fs from 'fs';
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import path from 'path';
-import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions);

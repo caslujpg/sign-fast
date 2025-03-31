@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { SignatureCanvas } from "./signature-canvas";
 
@@ -48,7 +49,7 @@ export function SignatureModal({ document, onClose, onSign }: SignatureModalProp
       {signature ? (
         <div>
           <h2 className="text-lg font-semibold">Assinatura:</h2>
-          <img src={signature} alt="Assinatura" className="border rounded-md mt-2" />
+          <Image width={800} height={800} src={signature} alt="Assinatura" className="border rounded-md mt-2" />
           <p className="text-sm text-gray-600 mt-2">Assinado em: {signedAt}</p>
         </div>
       ) : (

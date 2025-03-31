@@ -27,7 +27,6 @@ export default function RootLayout({
           <div id="modal"></div>
           {children}
         </Providers>
-        <script type="module" src="/src/index.tsx"></script>
       </body>
     </html>
   );
