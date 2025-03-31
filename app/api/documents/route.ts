@@ -125,10 +125,27 @@ export async function DELETE(request: NextRequest) {
       });
     }
 
-    const filePath = path.join(process.cwd(), "public/uploads", document.fileKey);
-    await fs.promises.unlink(filePath).catch(err => console.warn("Erro ao deletar arquivo:", err));
+    const signature = await db.signatures.findFirst({
+      where: { documentId: document.id, userId: user.id },
+    });
+
+    if (!signature) {
+      return new Response(JSON.stringify({ error: "Assinatura não encontrada" }), {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     await db.documents.delete({ where: { id } });
+    const documentPath = path.join(process.cwd(), "public/uploads", document.fileKey);
+    const signaturePath = path.join(process.cwd(), "public", signature.signatureImg)
+
+    await fs.promises.unlink(documentPath).catch(err => console.warn("Erro ao deletar o documento:", err));
+    await fs.promises.unlink(signaturePath).catch(err => console.warn("Erro ao deletar a assinatura:", err));
+
+
+
+
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,

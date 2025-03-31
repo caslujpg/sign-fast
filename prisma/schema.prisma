@@ -31,7 +31,7 @@ model Documents {
   name      String
   fileKey   String  
   userId    String  
-  user      Users    @relation(fields: [userId], references: [id])
+  user      Users    @relation(fields: [userId], references: [id], onDelete: Cascade)
   status    Status   @default(PENDING)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
