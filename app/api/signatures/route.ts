@@ -110,7 +110,6 @@ export async function GET(req: Request) {
 
   const { searchParams } = new URL(req.url);
   const documentId = searchParams.get("documentId");
-  console.log('documentId', documentId)
 
   if (!documentId) {
     return new Response(JSON.stringify({ error: "Documento não informado" }), {

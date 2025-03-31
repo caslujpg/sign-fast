@@ -1,4 +1,7 @@
-import { type MiddlewareConfig, type NextRequest, NextResponse } from "next/server";
+'use server'
+
+import withAuth, { NextRequestWithAuth } from 'next-auth/middleware';
+import { MiddlewareConfig, NextResponse } from 'next/server';
 
 const publicRoutes = [
   { path: '/login', whenAuthenticated: 'redirect' },
@@ -8,10 +11,14 @@ const publicRoutes = [
 
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/login';
 
-export function middleware(request: NextRequest) {
+function middleware(request: NextRequestWithAuth) {
   const path = request.nextUrl.pathname;
   const publicRoute = publicRoutes.find(route => route.path === path);
+<<<<<<< Updated upstream
   const authToken = request.cookies.get('next-auth.session-token');
+=======
+  const authToken = request.nextauth.token;
+>>>>>>> Stashed changes
 
   if (!authToken && publicRoute) {
     return NextResponse.next();
@@ -50,3 +57,9 @@ export const config: MiddlewareConfig = {
     '/((?!api/auth|api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
   ],
 }
+
+export default withAuth(middleware, {
+  callbacks: {
+    authorized: () => true
+  }
+});

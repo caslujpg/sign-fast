@@ -44,7 +44,6 @@ export const authOptions: NextAuthOptions = {
 
       return true;
     },
-
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
@@ -53,12 +52,18 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user = { ...session.user, id: token.id as string }
+        session.user.id = String(token)
       }
       return session;
     }
   },
   session: {
     strategy: "jwt",
+  },
+  pages: {
+    newUser: '/register',
+    signIn: '/login',
+    signOut: '/',
+
   }
 };

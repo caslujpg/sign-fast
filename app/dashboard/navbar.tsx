@@ -54,7 +54,7 @@ export default function Navbar({ userName }: { userName: string }) {
               <DropdownMenuLabel className="font-light text-xs">{userName}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Button variant="default" size="sm" className="bg-red-500 w-full" type="submit" onClick={() => signOut()}>
+                <Button variant="default" size="sm" className="bg-red-500 w-full" type="submit" onClick={() => signOut({ callbackUrl: '/' })}>
                   Logout
                 </Button>
               </DropdownMenuItem>
