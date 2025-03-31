@@ -88,13 +88,13 @@ export default async function Home() {
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-6">
             Como funciona?
           </h2>
-          <div className="mx-24 xl:mx-80 flex flex-col md:flex-row items-center justify-between">
+          <div className="mx-24 xl:mx-80 flex flex-col gap-4 items-center justify-between md:flex-row md:gap-8">
             <Image
               src={howItWorks}
               alt="Como funciona"
               className="max-w-xs"
             />
-            <ul className="md:text-2xl text-lg text-muted-foreground space-y-4 md:space-y-6 flex-shrink-0">
+            <ul className="md:text-2xl text-lg text-muted-foreground space-y-4 md:space-y-6">
               <li className="flex items-center justify-between gap-4">
                 Acesso a 1 assinatura por mês{' '}
                 <Check size={24} className="text-green-600" />
@@ -125,25 +125,6 @@ export default async function Home() {
         <div className="flex justify-center">
           <PricingCard />
         </div>
-      </section>
-      <section className="bg-white md:py-16 py-10 text-center">
-        <h2 className="md:text-6xl text-2xl font-bold md:mt-16">
-          Pronto Para Mudar Sua Forma de Assinar?
-        </h2>
-        <p className="text-gray-500 mt-4 text-sm md:text-xl max-w-3xl mx-auto">
-          Faça como milhares de outras pessoas. Assine nosso produto e tenha sua
-          praticidade e segurança garantidas{' '}
-        </p>
-        <Button className="mt-14 w-96">Assine Agora</Button>
-        <p className="text-xs text-muted-foreground mt-2">
-          Comece sua assinatura agora mesmo. Cancele quando quiser.{' '}
-        </p>
-        <footer className="mt-16 border-t border-gray-300 pt-10">
-          <Image src={logo} alt="Logotipo" className="mx-auto" />
-          <p className="text-muted-foreground">
-            © 2025 SignFast. Todos os direitos reservados.
-          </p>
-        </footer>
       </section>
     </main>
   );
