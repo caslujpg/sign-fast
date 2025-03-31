@@ -88,22 +88,22 @@ export default async function Home() {
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-6">
             Como funciona?
           </h2>
-          <div className="flex flex-col mx-4 gap-4 items-center justify-between md:flex-row md:gap-8">
+          <div className="flex flex-col mx-4 gap-4 items-center justify-center md:flex-row md:gap-8">
             <Image
               src={howItWorks}
               alt="Como funciona"
-              className="max-w-xs"
+              className="max-w-xs flex flex-1"
             />
-            <ul className="flex flex-1 flex-col text-lg text-muted-foreground space-y-4 md:space-y-6 md:text-2xl">
-              <li className="flex items-center justify-between gap-4">
+            <ul className="flex flex-col text-lg text-muted-foreground space-y-4 md:space-y-6 md:text-2xl">
+              <li className="flex items-center gap-4">
                 Acesso a 1 assinatura por mês{' '}
                 <Check size={24} className="text-green-600" />
               </li>
-              <li className="flex items-center justify-between gap-4">
+              <li className="flex items-center gap-4">
                 Salvar 10 documentos assinados
                 <Check size={24} className="text-green-600" />
               </li>
-              <li className="flex items-center justify-between gap-4">
+              <li className="flex items-center gap-4">
                 Cancele quando quiser
                 <Check size={24} className="text-green-600" />
               </li>
