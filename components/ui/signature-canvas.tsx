@@ -22,9 +22,7 @@ export function SignatureCanvas({ onSign }: SignatureCanvasProps) {
   return (
     <div className="flex flex-col items-center">
       <SignaturePad
-        ref={(ref) => {
-          sigPadRef.current = ref;
-        }}
+        ref={sigPadRef}
         canvasProps={{ className: "border border-gray-300 rounded-md w-full h-32" }}
       />
       <div className="mt-4 flex gap-4">
