@@ -171,7 +171,7 @@ export default function MyDocuments() {
                   </Button>
                   <Link
                     className={cn(buttonVariants())}
-                    href={`/uploads/${doc.fileKey}`}
+                    href={`/api/uploads/${doc.fileKey}`}
                     target="_blank"
                   >
                     <Download className="h-4 w-4 mr-3" /> Baixar

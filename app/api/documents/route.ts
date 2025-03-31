@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
   const fileExtension = path.extname(file.name);
   const filename = `${hash}${fileExtension}`;
 
-  const uploadDir = './public/uploads';
+  const uploadDir = path.join(process.cwd(), 'public', 'uploads')
   const filePath = path.join(uploadDir, filename);
 
   if (!fs.existsSync(uploadDir)) {
@@ -137,8 +137,8 @@ export async function DELETE(request: NextRequest) {
     }
 
     await db.documents.delete({ where: { id } });
-    const documentPath = path.join(process.cwd(), "public/uploads", document.fileKey);
-    const signaturePath = path.join(process.cwd(), "public", signature.signatureImg)
+    const documentPath = path.join(process.cwd(), 'public', 'uploads', document.fileKey);
+    const signaturePath = path.join(process.cwd(), 'public', signature.signatureImg)
 
     await fs.promises.unlink(documentPath).catch(err => console.warn("Erro ao deletar o documento:", err));
     await fs.promises.unlink(signaturePath).catch(err => console.warn("Erro ao deletar a assinatura:", err));

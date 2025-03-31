@@ -55,7 +55,7 @@ export async function POST(request: Request) {
     const base64Data = signatureImg.replace(/^data:image\/\w+;base64,/, "");
     const buffer = Buffer.from(base64Data, "base64");
 
-    const uploadDir = path.join(process.cwd(), "public/uploads/signatures");
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'signatures');
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
@@ -65,7 +65,7 @@ export async function POST(request: Request) {
 
     fs.writeFileSync(filepath, buffer);
 
-    const imageUrl = `/uploads/signatures/${filename}`;
+    const imageUrl = `/api/uploads/signatures/${filename}`;
 
     const signature = await db.signatures.create({
       data: {
