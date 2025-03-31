@@ -14,11 +14,7 @@ const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/login';
 function middleware(request: NextRequestWithAuth) {
   const path = request.nextUrl.pathname;
   const publicRoute = publicRoutes.find(route => route.path === path);
-<<<<<<< Updated upstream
-  const authToken = request.cookies.get('next-auth.session-token');
-=======
   const authToken = request.nextauth.token;
->>>>>>> Stashed changes
 
   if (!authToken && publicRoute) {
     return NextResponse.next();
