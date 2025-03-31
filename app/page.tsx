@@ -88,13 +88,13 @@ export default async function Home() {
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-6">
             Como funciona?
           </h2>
-          <div className="mx-24 xl:mx-80 flex flex-col gap-4 items-center justify-between md:flex-row md:gap-8">
+          <div className="flex flex-col mx-4 gap-4 items-center justify-between md:flex-row md:gap-8">
             <Image
               src={howItWorks}
               alt="Como funciona"
               className="max-w-xs"
             />
-            <ul className="md:text-2xl text-lg text-muted-foreground space-y-4 md:space-y-6">
+            <ul className="flex flex-1 flex-col text-lg text-muted-foreground space-y-4 md:space-y-6 md:text-2xl">
               <li className="flex items-center justify-between gap-4">
                 Acesso a 1 assinatura por mês{' '}
                 <Check size={24} className="text-green-600" />
